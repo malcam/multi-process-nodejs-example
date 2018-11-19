@@ -2,9 +2,9 @@
 
 const trace = require('@risingstack/trace')
 const logger = require('winston')
-const config = require('../../config')
-const tortoise = require('../../models/tortoise')
-const twitter = require('../../models/twitter')
+const config = require('../../config/index')
+const tortoise = require('../../models/tortoise/index')
+const twitter = require('../../models/twitter/index')
 
 const stream = twitter.stream('statuses/filter', { track: config.twitter.track })
 

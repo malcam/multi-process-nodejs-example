@@ -3,9 +3,9 @@
 const trace = require('@risingstack/trace')
 const joi = require('joi')
 const logger = require('winston')
-const config = require('../../config')
-const tortoise = require('../../models/tortoise')
-const redis = require('../../models/redis')
+const config = require('../../config/index')
+const tortoise = require('../../models/tortoise/index')
+const redis = require('../../models/redis/index')
 
 const messageSchema = joi.object({
   createdAt: joi.date()
