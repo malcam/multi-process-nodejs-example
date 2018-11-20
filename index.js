@@ -6,8 +6,8 @@ const type = process.env.PROCESS_TYPE;
 
 logger.info(`Starting '${type}' process`, { pid: process.pid });
 
-if (type === 'web') {
-  require('./services/web');
+if (type === 'sso') {
+  require('./services/sso');
 } else if (type === 'twitter-stream-worker') {
   require('./services/twitter-stream');
 } else if (type === 'social-preprocessor-worker') {
