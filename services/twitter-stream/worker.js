@@ -1,26 +1,24 @@
-'use strict'
+const trace = require('@risingstack/trace');
+const logger = require('winston');
+const config = require('../../config/index');
+const tortoise = require('../../models/tortoise/index');
+const twitter = require('../../models/twitter/index');
 
-const trace = require('@risingstack/trace')
-const logger = require('winston')
-const config = require('../../config/index')
-const tortoise = require('../../models/tortoise/index')
-const twitter = require('../../models/twitter/index')
-
-const stream = twitter.stream('statuses/filter', { track: config.twitter.track })
+const stream = twitter.stream('statuses/filter', { track: config.twitter.track });
 
 stream.on('data', (event) => {
-  const mentionsCount = event.text.split('@').length - 1
+  const mentionsCount = event.text.split('@').length - 1;
 
-  trace.incrementMetric('tweets/total')
-  trace.incrementMetric('tweets/mentions/total', mentionsCount)
-  trace.recordMetric('tweets/mentions/per_tweet', mentionsCount)
+  trace.incrementMetric('tweets/total');
+  trace.incrementMetric('tweets/mentions/total', mentionsCount);
+  trace.recordMetric('tweets/mentions/per_tweet', mentionsCount);
 
-  const queue = tortoise.QUEUE.tweet
+  const queue = tortoise.QUEUE.tweet;
   const message = {
     text: event.text,
     tweeter: event.user.screen_name,
-    createdAt: event.created_at
-  }
+    createdAt: event.created_at,
+  };
 
   tortoise
     .queue(queue)
@@ -28,20 +26,20 @@ stream.on('data', (event) => {
     .then(() => {
       logger.debug('New tweet received, published message to queue', {
         queue,
-        message
-      })
+        message,
+      });
     })
     .catch((err) => {
       logger.error('New tweet received, error happened during message publish to queue', {
         queue,
-        err
-      })
+        err,
+      });
 
-      throw err
-    })
-})
+      throw err;
+    });
+});
 
 stream.on('error', (err) => {
-  logger.error('Twitter stream error', err)
-  throw err
-})
+  logger.error('Twitter stream error', err);
+  throw err;
+});

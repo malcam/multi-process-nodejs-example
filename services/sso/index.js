@@ -1,9 +1,7 @@
-const { __base: base } = global;
-
 const http = require('http');
 const logger = require('winston');
 
-const config = require(`${base}/config/index`);
+const config = require('../../config/index');
 const app = require('./server');
 
 const server = http.createServer(app.callback());

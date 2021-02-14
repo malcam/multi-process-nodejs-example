@@ -1,6 +1,4 @@
-'use strict'
-
-const joi = require('joi')
+const joi = require('joi');
 
 const envVarsSchema = joi.object({
   TWITTER_CONSUMER_KEY: joi.string()
@@ -12,13 +10,13 @@ const envVarsSchema = joi.object({
   TWITTER_ACCESS_TOKEN_SECRET: joi.string()
     .required(),
   TWITTER_TRACK: joi.string()
-    .required()
+    .required(),
 }).unknown()
-  .required()
+  .required();
 
-const { error, value: envVars } = joi.validate(process.env, envVarsSchema)
+const { error, value: envVars } = joi.validate(process.env, envVarsSchema);
 if (error) {
-  throw new Error(`Config validation error: ${error.message}`)
+  throw new Error(`Config validation error: ${error.message}`);
 }
 
 const config = {
@@ -27,8 +25,8 @@ const config = {
     consumerSecret: envVars.TWITTER_CONSUMER_SECRET,
     accessTokenKey: envVars.TWITTER_ACCESS_TOKEN_KEY,
     accessTokenSecret: envVars.TWITTER_ACCESS_TOKEN_SECRET,
-    track: envVars.TWITTER_TRACK
-  }
-}
+    track: envVars.TWITTER_TRACK,
+  },
+};
 
-module.exports = config
+module.exports = config;
