@@ -14,17 +14,17 @@
   "author": "Andras Toth <andras.toth@risingstack.com>",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "5.3.0",
-    "eslint-config-airbnb-base": "13.1.0",
-    "eslint-plugin-import": "2.14.0",
+    "eslint": "^7.20.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
     "gulp": "^4.0.0",
-    "jest": "^23.6.0"
+    "jest": "^26.6.0"
   },
   "dependencies": {
-    "dotenv": "^6.1.0",
-    "joi": "^14.0.1",
+    "dotenv": "^8.2.0",
+    "joi": "^17.4.0",
     "koa": "^2.6.1",
-    "koa-router": "^7.4.0",
+    "koa-router": "^10.0.0",
     "winston": "^3.1.0"
   }
 }
