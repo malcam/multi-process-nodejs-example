@@ -11,5 +11,12 @@
         "ecmaVersion": 12
     },
     "rules": {
-    }
+    },
+    "overrides": [
+        {
+          "rules": {
+            "eol-last": "off"
+          }
+        }
+      ]
 }
