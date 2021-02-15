@@ -6,13 +6,11 @@ function defaultTask(cb) {
 }
 
 function addService() {
-  return  src('*.*', {read: false})
-  .pipe(dest('./src/my_new_service/application'))
-  .pipe(dest('./src/my_new_service/domain'))
-  .pipe(dest('./src/my_new_service/infrastructure'))
+  return src('*.*', { read: false })
+    .pipe(dest('./src/rest_api/application'))
+    .pipe(dest('./src/rest_api/domain'))
+    .pipe(dest('./src/rest_api/infrastructure'));
 }
 
 exports.default = defaultTask;
 exports.addService = addService;
-
- 
