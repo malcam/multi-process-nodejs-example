@@ -1,6 +1,6 @@
 const joi = require('joi');
 
-const envVarsSchema = joi.object({
+/*const envVarsSchema = joi.object({
   PORT: joi.number()
     .required(),
 }).unknown()
@@ -9,7 +9,9 @@ const envVarsSchema = joi.object({
 const { error, value: envVars } = joi.validate(process.env, envVarsSchema);
 if (error) {
   throw new Error(`Config validation error: ${error.message}`);
-}
+}*/
+
+const envVars = process.env;
 
 const config = {
   server: {

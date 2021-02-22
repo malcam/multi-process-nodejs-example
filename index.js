@@ -6,6 +6,8 @@ logger.info(`Starting '${type}' process`, { pid: process.pid });
 
 if (type === 'sso') {
   require('./services/sso');
+} else if (type === 'api') {
+  require('./services/rest_api');
 } else if (type === 'twitter-stream-worker') {
   require('./services/twitter-stream');
 } else if (type === 'social-preprocessor-worker') {
