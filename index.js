@@ -1,3 +1,4 @@
+const dotenv = require('dotenv').config();
 const logger = require('winston');
 
 const type = process.env.PROCESS_TYPE;
