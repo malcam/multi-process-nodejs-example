@@ -6,14 +6,13 @@ const router = new Router({
   prefix: '/login',
 });
 
-console.log(validate)
-
 router.post('/validate-email',
   validate( 
     joi.object({
       email: joi.string().email().required(),
     })
-  ), authService.validEmail);
+  ), authService.validateEmail
+  );
 
 router.post('/', () => {
 

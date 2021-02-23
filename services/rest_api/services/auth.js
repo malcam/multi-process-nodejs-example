@@ -1,11 +1,13 @@
 
 
-const {NOT_FOUND_EMAIL, SUCCEFULL, INCORRECT_PASSWORD } = require('../constants/response')
+const {NOT_FOUND_EMAIL, SUCCEFULL, INCORRECT_PASSWORD } = require('../constants/response');
+const users = require('../../../providers/mock/users');
+
 const authService = () => {
     
-    const validateEmail = (req,res) => {
+    const validateEmail =  (ctx, next) => {
 
-        let user = users.find(element => String.trim(element.email) == req.body.email );
+        let user =  users.find(element => String(element.email).trim() ==  ctx.request.body.email );
     
         if(!user){
             return res.json(NOT_FOUND_EMAIL);
@@ -15,7 +17,7 @@ const authService = () => {
     }
 
     const login = (req,res) => {
-        
+
     }
 
     const recoveryPassword = (req,res) => {
